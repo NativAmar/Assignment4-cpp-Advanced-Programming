@@ -24,7 +24,7 @@ public:
         attackValue =  Esource.attackValue;
     };
     //destructor
-    //~Entity();
+    ~Entity();
 
     Entity& operator+=(int num); //increase the currentAmountOfLife by the num which received
     Entity& operator-=(const Entity& other); //reduce the currentAmountOfLife according to the received character's attackValue
@@ -34,10 +34,8 @@ public:
     int getAttackValue() const;
     bool operator==(const Entity& other) const; //This operator will compare characters by their damage multiplied by the current amount of life they have
     bool operator>(const Entity& other) const;
-    bool operator<(const Entity &other) const;//?
-    bool operator>=(const Entity &other) const;//?
-    bool operator<=(const Entity &other) const;//?
-    friend ostream& operator<<(ostream& os, const Entity& other);
+    bool operator<(const Entity &other) const;
+    friend ostream& operator<<(ostream& os, const Entity& other);//print
 };
 
 #endif

@@ -36,7 +36,6 @@ void Game::cleanAndClear() {
         rooms = nullptr;
         roomCounter = 0;
     }
-    //delete entryRoom;
 }
 
 void Game::addRoomToArray(Room *room) {
@@ -66,7 +65,6 @@ void Game::parseLine(const string& line) {
     string roomID;
     int campfire, monsterLife, monsterDamage;
     if (s >> roomID >> campfire >> monsterLife >> monsterDamage) {
-    //if (sscanf(line.c_str(), "%s %d %d %d", &roomID, &campfire, &monsterLife, &monsterDamage) == 4) {
         Room *newRoom = new Room(roomID, campfire, monsterLife, monsterDamage);
         addRoomToArray(newRoom);
 
@@ -134,13 +132,13 @@ void Game::run() {
                 *(currentRoom->roomEntity) -= playerEntity;
                 cout << "You deal " << playerEntity.getAttackValue() << " damage to the monster and leave it with " << currentRoom->roomEntity->getCurrentAmountOfLife() << " health" << endl;
                 if (currentRoom->roomEntity->getCurrentAmountOfLife() == 0) {
-                    cout << "You defeat the monster and go on with your journy " << endl;
+                    cout << "You defeat the monster and go on with your journey " << endl;
                     break;
                 }
                 playerEntity -= *(currentRoom->roomEntity);
                 cout << "The monster deals " << currentRoom->roomEntity->getAttackValue() << " damage to you and leaves you with " << playerEntity.getCurrentAmountOfLife() << " health" << endl;
                 if (playerEntity.getCurrentAmountOfLife() == 0) {
-                    cout << "You lost the dungeon " << endl;
+                    cout << "You lost to the dungeon " << endl;
                     //exit and delete all
                     cleanAndClear();
                     return;
